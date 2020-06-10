@@ -24,9 +24,13 @@ class Location():
         response = requests.get(url)
         unstrcInfo = response.content.decode()
         dictInfo = eval(unstrcInfo)
-        
-        longitude = float(dictInfo['geonames'][0]['lng'])
-        latitude = float(dictInfo['geonames'][0]['lat'])
+        if dictInfo['totalResultsCount']>0:
+            
+            longitude = float(dictInfo['geonames'][0]['lng'])
+            latitude = float(dictInfo['geonames'][0]['lat'])
+        else:
+            longitude = 'Null'
+            latitude = 'Null'
         
         return longitude,latitude
     
@@ -55,6 +59,7 @@ if __name__ == "__main__":
     
     if os.path.exists(locationFname) and 'csv' in locationFname:
         df_loc = pd.read_csv(locationFname)
+        df_loc = df_loc.dropna()
         test_data = df_loc.values.tolist()
     else:
         
