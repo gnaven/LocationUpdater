@@ -7,16 +7,20 @@
     
     </head>
     <body>
-        <button onclick = "location.href='{% url 'script' %}'">Execute script</button> <hr>
-        {% if data1 %}
-        <pre>{{data1|linebreaks}}</pre>
-        {% endif %}
-        
-        <form action = "/external/" method = "post">
+        <form action = "/external" method = "post">
             {% csrf_token %}
             Input File Location
             <input type ="text" name = "param" required><br><br>
-            {{data_external}}<>
+            {{data_external}}<br><br>
+            <input type ="submit" value="Update Location">
+            <br><br>
+            {% if data1 %}
+            <pre>{{data1|linebreaks}}</pre>
+            {% endif %}
+            <br><br>
+            
+        </form>
+
     </body>
 
 </html>

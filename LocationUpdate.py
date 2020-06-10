@@ -2,6 +2,7 @@ import argparse
 import requests
 import pandas as pd
 import os
+import sys
 
 
 class Location():
@@ -47,10 +48,10 @@ class Location():
 
 if __name__ == "__main__":
     
-    parser = argparse.ArgumentParser(description='Location Updater')
-    parser.add_argument('-inputfile',type=str,default='locations.csv')
-    args = parser.parse_args()
-    locationFname = args.inputfile
+    #parser = argparse.ArgumentParser(description='Location Updater')
+    #parser.add_argument('-inputfile',type=str,default='locations.csv')
+    #args = parser.parse_args()
+    locationFname = sys.argv[1]
     
     if os.path.exists(locationFname) and 'csv' in locationFname:
         df_loc = pd.read_csv(locationFname)

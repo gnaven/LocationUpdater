@@ -19,5 +19,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.button),
-    path('output', views.external,name="script")
+    path('external', views.external)
 ]

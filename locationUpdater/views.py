@@ -13,8 +13,9 @@ def output (request):
     return render(request,'home.html',{'data1':data})
 
 def external(request):
-    
-    out = run([sys.executable,'//Users/gnaven/OneDrive - University of Rochester/Full-Time/Dimagi/locationUpdater/LocationUpdate.py'],shell=False,stdout=PIPE)
+    imp = request.POST.get('param')
+    imp = str(imp)
+    out = run([sys.executable,'//Users/gnaven/OneDrive - University of Rochester/Full-Time/Dimagi/locationUpdater/LocationUpdate.py',imp],shell=False,stdout=PIPE)
     data = out.stdout.decode("utf-8")
     return render(request,'home.html',{'data1':data})
     
