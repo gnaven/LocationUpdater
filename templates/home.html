@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Button to run script
+        </title>
+    
+    </head>
+    <body>
+        <button onclick = "location.href='{% url 'script' %}'">Execute script</button> <hr>
+        {% if data1 %}
+        <pre>{{data1|linebreaks}}</pre>
+        {% endif %}
+        
+        <form action = "/external/" method = "post">
+            {% csrf_token %}
+            Input File Location
+            <input type ="text" name = "param" required><br><br>
+            {{data_external}}<>
+    </body>
+
+</html>
